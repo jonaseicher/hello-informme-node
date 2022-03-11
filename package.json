@@ -1,0 +1,33 @@
+{
+  "name": "informme-node",
+  "version": "0.1.0",
+  "description": "node-backend for informme",
+  "main": "server.ts",
+  "scripts": {
+    "s": "nodemon",
+    "build": "rimraf ./target && tsc",
+    "start": "npm run build && node target/server.js"
+  },
+  "author": "jonas.maximilian.eicher@gmail.com",
+  "private": "true",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "base64url": "^3.0.1",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.3.1",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0"
+  }
+}
