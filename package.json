@@ -1,39 +1,22 @@
 {
-  "name": "informme-node",
+  "name": "informme-simple-hl7-tester",
   "version": "0.1.0",
-  "description": "node-backend for informme",
+  "description": "Should do roughly what medavis RIS in Dinkelsbuehl does. Listen on port 5000 for MDM and send ADT messages to localhost:10300",
   "main": "server.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rimraf ./target && tsc",
     "update": "ncu -u && npm i && npm audit fix",
-    "test": "mocha",
-    "start": "npm run build && node target/server.js"
+    "start": "node src/server.js"
   },
   "author": "jonas.maximilian.eicher@gmail.com",
   "private": "true",
   "license": "UNLICENSED",
   "dependencies": {
-    "axios": "^0.27.2",
-    "base64url": "^3.0.1",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "helmet": "^5.1.1",
-    "morgan": "^1.10.0",
-    "rimraf": "^3.0.2",
-    "socket.io": "^4.5.1",
-    "socket.io-client": "^4.5.1",
+    "simple-hl7": "^3.2.4",
     "typescript": "^4.7.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.3",
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/mocha": "^9.1.1",
-    "@types/morgan": "^1.9.3",
     "@types/node": "^18.7.5",
-    "chai": "^4.3.6",
-    "mocha": "^10.0.0",
     "nodemon": "^2.0.19",
     "npm-check-updates": "^16.0.5",
     "prettier": "^2.7.1",
