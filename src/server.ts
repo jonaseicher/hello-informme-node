@@ -34,7 +34,9 @@ const adtSocket = io('127.0.0.1:10300');
 const adt1 =
   'MSH|^~&|medavis RIS|MEDAVIS|PIM|PIM|20220815092229||ADT^A01|99224|P|2.5|||AL|NE||8859/1\nSFT|medavis\nEVN|A01|20220815092229||||20220815092225\nPID|1|666666823^^^MEDAVIS^PI|666666823^^^MEDAVIS^PI||Test^Test||20000101|M|||^^^^^D|||||||||||||||||||N\nPV1|1\nIN1\nIN2|||||O';
 
-adtSocket.emit('ADTMsg', adt1);
+setInterval(() => {
+  adtSocket.emit('ADTMsg', adt1);
+}, 5000);
 
 // // Logging
 // app.use(
