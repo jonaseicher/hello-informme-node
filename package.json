@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "node-backend for informme",
   "main": "server.ts",
-  "type": "module",
   "scripts": {
     "dev": "nodemon",
     "build": "rimraf ./target && tsc",
