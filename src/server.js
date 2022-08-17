@@ -1,5 +1,8 @@
 var hl7 = require('simple-hl7');
 
+const sendPort = process.env.SEND_PORT || 10300;
+const listenPort = process.env.LISTEN_PORT || 5000;
+
 ///////////////////SERVER/////////////////////
 var app = hl7.tcp();
 
@@ -19,6 +22,7 @@ app.use(function (req, res, next) {
   res.end();
 });
 
+// test
 app.use(function (err, req, res, next) {
   //error handler
   //standard error middleware would be
@@ -31,11 +35,12 @@ app.use(function (err, req, res, next) {
 });
 
 //Listen on port 7777
-app.start(5000); //optionally pass encoding here, app.start(1234, 'latin-1');
+app.start(listenPort); //optionally pass encoding here, app.start(1234, 'latin-1');
+console.log(`started listening on port ${listenPort}`);
 ///////////////////SERVER/////////////////////
 
 ///////////////////CLIENT/////////////////////
-var client = hl7.Server.createTcpClient('localhost', 10300);
+var client = hl7.Server.createTcpClient('localhost', sendPort);
 
 //create a message
 var msg = new hl7.Message(
@@ -50,14 +55,16 @@ var msg = new hl7.Message(
   '2.5'
 );
 
-console.log('****** sending ADT message to localhost:10300 *****');
-client.send(msg, function (err, ack) {
-  if (err) {
-    console.log('****** error when sending *****');
-    console.log(err);
-    return;
-  }
-  console.log('****** ack received *****');
-  console.log(ack.log());
-});
+setInterval(() => {
+  console.log(`****** sending ADT message to localhost:${sendPort} *****`);
+  client.send(msg, function (err, ack) {
+    if (err) {
+      console.log('****** error when sending *****');
+      console.log(err);
+      return;
+    }
+    console.log('****** ack received *****');
+    console.log(ack.log());
+  });
+}, 5000);
 ///////////////////CLIENT/////////////////////
